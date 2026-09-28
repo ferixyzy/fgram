@@ -1,0 +1,164 @@
+:root {
+  --font-display: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --accent-1: #7c6cff;
+  --accent-2: #34e4ea;
+  --accent-grad: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  --danger: #ff5c7a;
+  --online: #34e4a0;
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.18);
+  --nav-height: 64px;
+  --topbar-height: 56px;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+[data-theme="dark"] {
+  --bg: #0b0f17;
+  --bg-elevated: #10141e;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-strong: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #eaf0ff;
+  --text-muted: #8b93a7;
+  --bubble-in: rgba(255, 255, 255, 0.08);
+  --bubble-out: linear-gradient(135deg, #6a57e8, #2fb8c9);
+  --scrim: rgba(5, 7, 12, 0.55);
+}
+
+[data-theme="light"] {
+  --bg: #f3f5fb;
+  --bg-elevated: #ffffff;
+  --surface: rgba(255, 255, 255, 0.65);
+  --surface-strong: rgba(255, 255, 255, 0.85);
+  --border: rgba(15, 20, 35, 0.08);
+  --text: #12162a;
+  --text-muted: #666f87;
+  --bubble-in: rgba(15, 20, 35, 0.05);
+  --bubble-out: linear-gradient(135deg, #6a57e8, #17bfc7);
+  --scrim: rgba(20, 24, 38, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  scroll-padding-top: var(--safe-top);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.app-shell {
+  max-width: 480px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media (min-width: 520px) {
+  body {
+    background: radial-gradient(circle at 30% 20%, rgba(124, 108, 255, 0.12), transparent 60%),
+      radial-gradient(circle at 80% 80%, rgba(52, 228, 234, 0.1), transparent 55%), var(--bg);
+    padding: 24px 0;
+  }
+
+  .app-shell {
+    height: calc(100vh - 48px);
+    max-height: 900px;
+    border-radius: 32px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+.screen {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--safe-top);
+}
+
+.screen-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
